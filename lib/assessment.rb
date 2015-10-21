@@ -43,8 +43,9 @@ class Assessment
   # replacing the trailing newline character with a
   # space.  Remove the trailing space and return the result.
   def read_file(filename)
-    File.open(filename).each_with_object('') do |line, memo|
-      memo << line.chomp + ' '
-    end.strip
+    File.open(filename).reduce('') { |a, e| a << e.chomp + ' ' }.strip
+    # File.open(filename).each_with_object('') do |line, memo|
+    #   memo << line.chomp + ' '
+    # end.strip
   end
 end
